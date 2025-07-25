@@ -14,7 +14,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.login.R;
-import com.google.firebase.Firebase;
+
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Register extends AppCompatActivity {
@@ -44,6 +44,11 @@ public class Register extends AppCompatActivity {
                 Toast.makeText(this, "Email and Password are required!", Toast.LENGTH_SHORT).show();
                 return;
             }
+            if (password.length() < 6) {
+                Toast.makeText(this, "Password must be 6 characters",Toast.LENGTH_SHORT).show();
+                return;
+            }
+
 
             auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(task -> {

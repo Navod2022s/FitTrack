@@ -15,8 +15,8 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Loginactivity extends AppCompatActivity {
     EditText emailInput,passwordInput;
-    Button registerButton;
-    TextView loginLink;
+    Button loginButton;
+    TextView registerLink;
     FirebaseAuth auth;
 
     @Override
@@ -44,7 +44,7 @@ public class Loginactivity extends AppCompatActivity {
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
                             Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(Loginactivity.this, HomeActivity.class));
+                            startActivity(new Intent(Loginactivity.this, Home.class));
                             finish();
                         } else {
                             Toast.makeText(this, "Login failed: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
