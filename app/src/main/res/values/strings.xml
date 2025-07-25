@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Login</string>
+    <string name="E_mail">Email</string>
+    <string name="Password">Password</string>
+    <string name="String">Don\'t have an account ? Register</string>
+    <string name="String2">Welcome to FitTrack!</string>
+    <string name="String3">Start Workout</string>
+    <string name="register">Register</string>
+    <string name="String4">Already have an account? Login</string>
+
+
+</resources>
