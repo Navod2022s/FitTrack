@@ -1,12 +1,23 @@
 <resources>
+    // Login
     <string name="app_name">Login</string>
     <string name="E_mail">Email</string>
     <string name="Password">Password</string>
+
     <string name="String">Don\'t have an account ? Register</string>
     <string name="String2">Welcome to FitTrack!</string>
     <string name="String3">Start Workout</string>
     <string name="register">Register</string>
     <string name="String4">Already have an account? Login</string>
+
+    // activity_dashboard
+    <string name="MoodTracker">Mood Tracker</string>
+    <string name="StepCounter">Step Counter</string>
+    <string name="Logout">Logout</string>
+    <string name="TaskList">Task List</string>
+
+    // activity_task
+    <string name="AddTask">Add Task</string>
 
 
 </resources>
