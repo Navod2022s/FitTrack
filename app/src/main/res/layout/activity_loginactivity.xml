@@ -8,7 +8,7 @@
 
     <EditText
         android:id="@+id/emailInput"
-        android:hint="@string/E_mail"
+        android:hint="@string/eMail"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
 
     <EditText
         android:id="@+id/passwordInput"
-        android:hint="@string/Password"
+        android:hint="@string/password"
         android:inputType="textPassword"
         android:minHeight="48dp"
         android:layout_width="match_parent"
@@ -26,19 +26,22 @@
 
     <Button
         android:id="@+id/loginButton"
-        android:text="@string/app_name"
+        android:text="@string/appName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"/>
 
+
     <TextView
-        android:id = "@+id/registerLink"
-        android:focusable="true"
-        android:text = "@string/String"
-        android:textAlignment = "center"
-        android:textColor =" @android:color/holo_blue_dark"
-        android:clickable= "true"
+        android:id="@+id/registerLink"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"/>
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/oneString"
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_blue_dark"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="8dp"/>
+
 </LinearLayout>

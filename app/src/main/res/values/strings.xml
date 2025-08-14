@@ -1,12 +1,43 @@
-<resources>
-    <string name="app_name">Login</string>
-    <string name="E_mail">Email</string>
-    <string name="Password">Password</string>
-    <string name="String">Don\'t have an account ? Register</string>
-    <string name="String2">Welcome to FitTrack!</string>
-    <string name="String3">Start Workout</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Login -->
+    <string name="appName">Login</string>
+    <string name="eMail">Email</string>
+    <string name="password">Password</string>
+
+    <string name="oneString">Don\'t have an account? Register</string>
+    <string name="twoString">Welcome to FitTrack!</string>
+    <string name="threeString">Start Workout</string>
     <string name="register">Register</string>
-    <string name="String4">Already have an account? Login</string>
+    <string name="fourString">Already have an account? Login</string>
 
+    <!-- activity_dashboard -->
+    <string name="moodTracker">Mood Tracker</string>
+    <string name="stepCounter">Step Counter</string>
+    <string name="logout">Logout</string>
+    <string name="taskList">Task List</string>
 
+    <!-- activity_task -->
+    <string name="addTask">Add Task</string>
+    <string name="enterNewTask">Enter new task</string>
+
+    <!-- activity_mood -->
+    <string name="todaysMood">Today\'s Mood:</string>
+    <string name="happy">😊</string>
+    <string name="neutral">😐</string>
+    <string name="sad">😢</string>
+    <string name="angry">😡</string>
+
+    <!-- activity_quote -->
+    <string name="quote_text">Quote will appear here</string>
+    <string name="new_quote">New Quote</string>
+
+    <!-- Motivational Quotes -->
+    <string-array name="motivational_quotes">
+        <item>Believe you can and you\'re halfway there.</item>
+        <item>Don\'t watch the clock; do what it does. Keep going.</item>
+        <item>Success is not final, failure is not fatal: Keep going.</item>
+        <item>Push yourself, because no one else is going to do it for you.</item>
+        <item>The harder you work for something, the greater you\'ll feel when you achieve it.</item>
+    </string-array>
 </resources>
