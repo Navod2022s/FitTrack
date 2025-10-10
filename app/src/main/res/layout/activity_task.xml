@@ -15,7 +15,7 @@
         android:textStyle="bold"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="12dp" />
-
+     <!---->
     <!-- RecyclerView for task list -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/taskRecyclerView"
