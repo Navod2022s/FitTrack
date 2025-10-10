@@ -2,20 +2,13 @@ package activities;
 
 import android.os.Bundle;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.login.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 
@@ -23,11 +16,6 @@ public class TaskActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private TaskAdapter taskAdapter;
-    private ArrayList<TaskModel> taskList;
-    private TextView quoteText;
-
-    private FirebaseFirestore db;
-    private CollectionReference tasksRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +23,6 @@ public class TaskActivity extends AppCompatActivity {
         setContentView(R.layout.activity_task);
 
         recyclerView = findViewById(R.id.recyclerView);
-        FloatingActionButton fabAddTask = findViewById(R.id.fabAddTask);
-        quoteText = findViewById(R.id.quoteText);
-
-        quoteText.setText(QuoteHelper.getRandomQuote(this));
 
         taskList = new ArrayList<>();
         taskAdapter = new TaskAdapter(taskList);
@@ -46,59 +30,7 @@ public class TaskActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(taskAdapter);
 
-        db = FirebaseFirestore.getInstance();
-        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        tasksRef = db.collection("tasks").document(userId).collection("userTasks");
-
-        loadTasks();
-
-        fabAddTask.setOnClickListener(v -> showAddTaskDialog());
-    }
-
-    private void showAddTaskDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Add New Task");
-
-        final EditText input = new EditText(this);
-        input.setHint("Enter task name");
-        builder.setView(input);
-
-        builder.setPositiveButton("Add", (dialog, which) -> {
-            String taskName = input.getText().toString().trim();
-            if (!taskName.isEmpty()) {
-                addTaskToFirestore(taskName);
-            } else {
-                Toast.makeText(this, "Task cannot be empty", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
-
-        builder.show();
-    }
-
-    private void addTaskToFirestore(String taskName) {
-        TaskModel newTask = new TaskModel(taskName);
-        tasksRef.add(newTask)
-                .addOnSuccessListener(docRef -> {
-                    Toast.makeText(this, "Task added", Toast.LENGTH_SHORT).show();
-                    loadTasks();
-                })
-                .addOnFailureListener(e ->
-                        Toast.makeText(this, "Error adding task", Toast.LENGTH_SHORT).show()
-                );
-    }
-
-    private void loadTasks() {
-        tasksRef.get().addOnSuccessListener(queryDocumentSnapshots -> {
-            taskList.clear();
-            for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
-                TaskModel task = doc.toObject(TaskModel.class);
                 taskList.add(task);
             }
-            taskAdapter.notifyDataSetChanged();
-        }).addOnFailureListener(e ->
-                Toast.makeText(this, "Error loading tasks", Toast.LENGTH_SHORT).show()
-        );
     }
 }

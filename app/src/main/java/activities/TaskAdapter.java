@@ -14,9 +14,7 @@ import java.util.ArrayList;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder> {
 
-    private final ArrayList<TaskModel> taskList;
 
-    public TaskAdapter(ArrayList<TaskModel> taskList) {
         this.taskList = taskList;
     }
 
@@ -30,8 +28,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull TaskViewHolder holder, int position) {
-        TaskModel task = taskList.get(position);
-        holder.taskTitle.setText(task.getTitle());
     }
 
     @Override
@@ -39,12 +35,8 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         return taskList.size();
     }
 
-    static class TaskViewHolder extends RecyclerView.ViewHolder {
-        TextView taskTitle;
-
         public TaskViewHolder(@NonNull View itemView) {
             super(itemView);
-            taskTitle = itemView.findViewById(R.id.taskTitle);
         }
     }
 }
