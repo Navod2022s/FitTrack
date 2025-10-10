@@ -9,7 +9,7 @@
         android:id="@+id/quoteText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/quote_text"
+        android:text="Quote text"
         android:textSize="20sp"
         android:textAlignment="center"
         android:layout_marginBottom="24dp"
@@ -20,5 +20,5 @@
         android:id="@+id/newQuoteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/new_quote"/>
+        android:text="New Quotes"/>
 </LinearLayout>

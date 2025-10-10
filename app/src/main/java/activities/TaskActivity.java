@@ -1,36 +1,41 @@
 package activities;
 
 import android.os.Bundle;
-import android.widget.EditText;
 import android.widget.Toast;
-
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.login.R;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
+import java.util.List;
 
 public class TaskActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
     private TaskAdapter taskAdapter;
+    private List<Task> taskList;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task);
 
-        recyclerView = findViewById(R.id.recyclerView);
+        RecyclerView taskRecyclerView = findViewById(R.id.taskRecyclerView);
+        FloatingActionButton addTaskButton = findViewById(R.id.addTaskButton);
 
         taskList = new ArrayList<>();
         taskAdapter = new TaskAdapter(taskList);
+        taskRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        taskRecyclerView.setAdapter(taskAdapter);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(taskAdapter);
-
-                taskList.add(task);
-            }
+        addTaskButton.setOnClickListener(v -> {
+            Task newTask = new Task("New Task", "Task Description", false);
+            taskList.add(newTask);
+            taskAdapter.notifyItemInserted(taskList.size() - 1);
+            Toast.makeText(this, "Task Added", Toast.LENGTH_SHORT).show();
+        });
     }
 }
