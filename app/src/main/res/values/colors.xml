@@ -1,36 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="teal_200">#FF0000</color>   <!-- red for step counter -->
-
-    <resources>
-        <!-- Primary theme colors -->
-        <color name="primary">#FF5722</color>       <!-- Vibrant Orange -->
-        <color name="primary_dark">#E64A19</color>  <!-- Dark Orange -->
-        <color name="accent">#03A9F4</color>        <!-- Light Blue -->
-
-        <!-- Background and surfaces -->
-        <color name="background">#FFFFFFFF</color>  <!-- White -->
-        <color name="surface">#F5F5F5</color>       <!-- Light Gray -->
-        <color name="card">#FAFAFA</color>          <!-- Card background -->
-
-        <!-- Text colors -->
-        <color name="text_primary">#212121</color>  <!-- Almost black -->
-        <color name="text_secondary">#757575</color> <!-- Gray -->
-        <color name="text_on_primary">#FFFFFF</color> <!-- White on orange -->
-
-        <!-- Status colors -->
-        <color name="success">#4CAF50</color>       <!-- Green -->
-        <color name="warning">#FFC107</color>       <!-- Amber -->
-        <color name="danger">#F44336</color>        <!-- Red -->
-
-        <!-- Additional Huawei Health–style accents -->
-        <color name="teal_201">#03DAC5</color>      <!-- Teal (calm tone) -->
-        <color name="purple">#9C27B0</color>        <!-- Motivational highlight -->
-        <color name="step_graph">#2196F3</color>    <!-- Blue for steps -->
-        <color name="mood_graph">#FF9800</color>    <!-- Orange for mood -->
-    </resources>
 
 
+
+                <color name="md_theme_primary">#8449F8</color>
+                <color name="md_theme_onPrimary">#FFFFFF</color>
+                <color name="md_theme_secondary">#03DAC6</color>
+                <color name="md_theme_onSecondary">#000000</color>
+                <color name="md_theme_error">#B00020</color>
+                <color name="md_theme_background">#FFFFFF</color>
+                <color name="md_theme_onBackground">#000000</color>
+                <color name="md_theme_surface">#FFFFFF</color>
+                <color name="md_theme_onSurface">#000000</color>
+
+
+        <!-- Light theme colors -->
+        <color name="light_primary">#4CAF50</color>       <!-- Fitness Green -->
+        <color name="light_on_primary">#FFFFFF</color>    <!-- White text/icons -->
+        <color name="light_secondary">#FF9800</color>     <!-- Motivation Orange -->
+        <color name="light_background">#FFFFFF</color>    <!-- Background white -->
+        <color name="light_on_background">#212121</color> <!-- Text dark gray -->
+        <color name = "colorPrimary">#FF9800</color>          <!--Step counter-->
+
+        <!-- Dark theme colors -->
+        <color name="dark_primary">#81C784</color>        <!-- Soft Green -->
+        <color name="dark_on_primary">#000000</color>     <!-- Black text/icons -->
+        <color name="dark_secondary">#FFB74D</color>      <!-- Warm Orange -->
+        <color name="dark_background">#121212</color>     <!-- Dark BG -->
+        <color name="dark_on_background">#E0E0E0</color>  <!-- Light text -->
 </resources>
+
+

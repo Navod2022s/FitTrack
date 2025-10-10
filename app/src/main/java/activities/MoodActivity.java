@@ -8,6 +8,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.login.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -18,8 +19,7 @@ import java.util.Locale;
 
 public class MoodActivity extends AppCompatActivity {
 
-    private TextView todayMoodText;
-    private TextView quoteText; // Motivational quote
+    private TextView todayMoodText, quoteText;
     private Button moodHappy, moodNeutral, moodSad, moodAngry;
 
     private FirebaseFirestore db;
@@ -33,8 +33,8 @@ public class MoodActivity extends AppCompatActivity {
         setContentView(R.layout.activity_mood);
 
         todayMoodText = findViewById(R.id.todayMoodText);
-        quoteText = findViewById(R.id.quoteText); // Initialize quote TextView
-        quoteText.setText(QuoteHelper.getRandomQuote(this)); // Display random quote
+        quoteText = findViewById(R.id.quoteText);
+        quoteText.setText(QuoteHelper.getRandomQuote(this));
 
         moodHappy = findViewById(R.id.moodHappy);
         moodNeutral = findViewById(R.id.moodNeutral);
@@ -42,14 +42,13 @@ public class MoodActivity extends AppCompatActivity {
         moodAngry = findViewById(R.id.moodAngry);
 
         db = FirebaseFirestore.getInstance();
-        moodsRef = db.collection("moods");
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        moodsRef = db.collection("moods").document(userId).collection("dailyMoods");
 
         todayDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
 
-        // Load today’s mood
         loadTodayMood();
 
-        // Mood button click listeners
         moodHappy.setOnClickListener(v -> saveMood("happy"));
         moodNeutral.setOnClickListener(v -> saveMood("neutral"));
         moodSad.setOnClickListener(v -> saveMood("sad"));
@@ -74,7 +73,7 @@ public class MoodActivity extends AppCompatActivity {
 
     private void saveMood(String mood) {
         moodsRef.add(new MoodModel(todayDate, mood))
-                .addOnSuccessListener(documentReference -> {
+                .addOnSuccessListener(docRef -> {
                     Toast.makeText(this, "Mood saved", Toast.LENGTH_SHORT).show();
                     highlightMoodButton(mood);
                 })
@@ -90,7 +89,7 @@ public class MoodActivity extends AppCompatActivity {
         moodSad.setAlpha(0.5f);
         moodAngry.setAlpha(0.5f);
 
-        // Highlight the selected mood
+        // Highlight selected mood
         switch (mood) {
             case "happy": moodHappy.setAlpha(1f); break;
             case "neutral": moodNeutral.setAlpha(1f); break;

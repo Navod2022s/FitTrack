@@ -6,14 +6,28 @@
     android:padding="16dp"
     android:gravity="center">
 
+    <!-- Motivational Quote at the Top -->
+    <TextView
+        android:id="@+id/quoteText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/quote_text"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:padding="8dp"
+        android:layout_marginBottom="24dp"
+        android:textColor="?attr/colorPrimary"/>
+
+    <!-- Today's Mood Label -->
     <TextView
         android:id="@+id/todayMoodText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/todaysMood"
         android:textSize="18sp"
-        android:layout_marginBottom="24dp"/>
+        android:layout_marginBottom="16dp"/>
 
+    <!-- Mood Buttons -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -26,7 +40,8 @@
             android:layout_height="80dp"
             android:text="@string/happy"
             android:textSize="32sp"
-            style="@style/Widget.MaterialComponents.Button.TextButton" />
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            app:backgroundTint="?attr/colorSecondary"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/moodNeutral"
@@ -35,7 +50,8 @@
             android:text="@string/neutral"
             android:textSize="32sp"
             style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:layout_marginStart="16dp"/>
+            android:layout_marginStart="16dp"
+            app:backgroundTint="?attr/colorSecondary"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/moodSad"
@@ -44,7 +60,8 @@
             android:text="@string/sad"
             android:textSize="32sp"
             style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:layout_marginStart="16dp"/>
+            android:layout_marginStart="16dp"
+            app:backgroundTint="?attr/colorSecondary"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/moodAngry"
@@ -53,18 +70,9 @@
             android:text="@string/angry"
             android:textSize="32sp"
             style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:layout_marginStart="16dp"/>
-
+            android:layout_marginStart="16dp"
+            app:backgroundTint="?attr/colorSecondary"/>
 
     </LinearLayout>
-    <TextView
-        android:id="@+id/quoteText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/quote_text"
-        android:textAlignment="center"
-        android:textSize="16sp"
-        android:padding="8dp"
-        android:layout_marginTop="16dp"
-        android:textColor="@android:color/holo_blue_dark"/>
+
 </LinearLayout>

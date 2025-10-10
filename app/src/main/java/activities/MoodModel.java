@@ -1,12 +1,12 @@
 package activities;
 
 public class MoodModel {
-
     private String date;
     private String mood;
 
-    // Required empty constructor for Firestore
-    public MoodModel() { }
+    public MoodModel() {
+        // Required for Firestore
+    }
 
     public MoodModel(String date, String mood) {
         this.date = date;

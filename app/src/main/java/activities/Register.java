@@ -9,16 +9,12 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.login.R;
-
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Register extends AppCompatActivity {
-    EditText emailInput,passwordInput;
+    EditText emailInput, passwordInput;
     Button registerButton;
     TextView loginLink;
     FirebaseAuth auth;
@@ -45,19 +41,20 @@ public class Register extends AppCompatActivity {
                 return;
             }
             if (password.length() < 6) {
-                Toast.makeText(this, "Password must be 6 characters",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Password must be at least 6 characters", Toast.LENGTH_SHORT).show();
                 return;
             }
-
 
             auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
                             Toast.makeText(this, "Registration successful!", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(Register.this, Loginactivity.class));
+                            //  Go directly to Dashboard
+                            startActivity(new Intent(Register.this, DashboardActivity.class));
                             finish();
                         } else {
-                            Toast.makeText(this, "Registration failed: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(this, "Registration failed: " + task.getException().getMessage(),
+                                    Toast.LENGTH_LONG).show();
                         }
                     });
         });

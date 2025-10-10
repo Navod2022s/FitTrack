@@ -4,16 +4,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.login.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class DashboardActivity extends AppCompatActivity {
 
-    Button taskButton, moodButton, stepButton, logoutButton;
-    TextView quoteText; // TextView for motivational quote
+    private Button taskButton, moodButton, stepButton, logoutButton;
+    private TextView quoteText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,30 +26,23 @@ public class DashboardActivity extends AppCompatActivity {
         stepButton = findViewById(R.id.stepButton);
         logoutButton = findViewById(R.id.logoutButton);
 
-        // Initialize quote TextView
+        // Initialize quote TextView at the top
         quoteText = findViewById(R.id.quoteText);
-        quoteText.setText(QuoteHelper.getRandomQuote(this)); // Set a random quote
+        quoteText.setText(QuoteHelper.getRandomQuote(this));
 
-        // Task button
-        taskButton.setOnClickListener(v -> {
-            Intent intent = new Intent(DashboardActivity.this, TaskActivity.class);
-            startActivity(intent);
-            Toast.makeText(this, "Opening Task List", Toast.LENGTH_SHORT).show();
-        });
+        // Open TaskActivity
+        taskButton.setOnClickListener(v -> startActivity(new Intent(DashboardActivity.this, TaskActivity.class)));
 
-        // Mood tracker
-        moodButton.setOnClickListener(v -> {
-            startActivity(new Intent(DashboardActivity.this, MoodActivity.class));
-        });
+        // Open MoodActivity
+        moodButton.setOnClickListener(v -> startActivity(new Intent(DashboardActivity.this, MoodActivity.class)));
 
-        // Step counter
-        /* stepButton.setOnClickListener(v -> {
-            startActivity(new Intent(DashboardActivity.this, StepCounterActivity.class));
-        }); */
+        // Open StepCounterActivity
+        stepButton.setOnClickListener(v -> startActivity(new Intent(DashboardActivity.this, StepCounterActivity.class)));
 
-        // Logout
+        // Logout button
         logoutButton.setOnClickListener(v -> {
-            finishAffinity(); // Closes all activities
+            FirebaseAuth.getInstance().signOut(); // Sign out from Firebase
+            finishAffinity(); // Close all activities
         });
     }
 }

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.login.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -23,7 +24,7 @@ public class TaskActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private TaskAdapter taskAdapter;
     private ArrayList<TaskModel> taskList;
-    private TextView quoteText; // TextView for motivational quote
+    private TextView quoteText;
 
     private FirebaseFirestore db;
     private CollectionReference tasksRef;
@@ -35,8 +36,9 @@ public class TaskActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerView);
         FloatingActionButton fabAddTask = findViewById(R.id.fabAddTask);
-        quoteText = findViewById(R.id.quoteText); // Initialize quote TextView
-        quoteText.setText(QuoteHelper.getRandomQuote(this)); // Set random quote
+        quoteText = findViewById(R.id.quoteText);
+
+        quoteText.setText(QuoteHelper.getRandomQuote(this));
 
         taskList = new ArrayList<>();
         taskAdapter = new TaskAdapter(taskList);
@@ -45,14 +47,14 @@ public class TaskActivity extends AppCompatActivity {
         recyclerView.setAdapter(taskAdapter);
 
         db = FirebaseFirestore.getInstance();
-        tasksRef = db.collection("tasks");
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        tasksRef = db.collection("tasks").document(userId).collection("userTasks");
 
         loadTasks();
 
         fabAddTask.setOnClickListener(v -> showAddTaskDialog());
     }
 
-    // Show dialog to enter new task
     private void showAddTaskDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Add New Task");
@@ -75,7 +77,18 @@ public class TaskActivity extends AppCompatActivity {
         builder.show();
     }
 
-    // Load tasks from FireStore
+    private void addTaskToFirestore(String taskName) {
+        TaskModel newTask = new TaskModel(taskName);
+        tasksRef.add(newTask)
+                .addOnSuccessListener(docRef -> {
+                    Toast.makeText(this, "Task added", Toast.LENGTH_SHORT).show();
+                    loadTasks();
+                })
+                .addOnFailureListener(e ->
+                        Toast.makeText(this, "Error adding task", Toast.LENGTH_SHORT).show()
+                );
+    }
+
     private void loadTasks() {
         tasksRef.get().addOnSuccessListener(queryDocumentSnapshots -> {
             taskList.clear();
@@ -88,17 +101,4 @@ public class TaskActivity extends AppCompatActivity {
                 Toast.makeText(this, "Error loading tasks", Toast.LENGTH_SHORT).show()
         );
     }
-
-    // Add new task to FireStore
-    private void addTaskToFirestore(String task) {
-        tasksRef.add(new TaskModel(task))  // <- uses TaskModel(String title)
-                .addOnSuccessListener(documentReference -> {
-                    Toast.makeText(this, "Task added", Toast.LENGTH_SHORT).show();
-                    loadTasks();
-                })
-                .addOnFailureListener(e ->
-                        Toast.makeText(this, "Error adding task", Toast.LENGTH_SHORT).show()
-                );
-    }
-
 }

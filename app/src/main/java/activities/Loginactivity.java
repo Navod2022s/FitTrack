@@ -14,7 +14,7 @@ import com.example.login.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Loginactivity extends AppCompatActivity {
-    EditText emailInput,passwordInput;
+    EditText emailInput, passwordInput;
     Button loginButton;
     TextView registerLink;
     FirebaseAuth auth;
@@ -24,6 +24,7 @@ public class Loginactivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_loginactivity);
+
         auth = FirebaseAuth.getInstance();
 
         emailInput = findViewById(R.id.emailInput);
@@ -44,7 +45,8 @@ public class Loginactivity extends AppCompatActivity {
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
                             Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(Loginactivity.this, Home.class));
+                            // Navigate to Dashboard
+                            startActivity(new Intent(Loginactivity.this, DashboardActivity.class));
                             finish();
                         } else {
                             Toast.makeText(this, "Login failed: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
@@ -52,9 +54,8 @@ public class Loginactivity extends AppCompatActivity {
                     });
         });
 
-        registerLink.setOnClickListener(v -> {
-            startActivity(new Intent(Loginactivity.this, Register.class));
-        });
-
+        registerLink.setOnClickListener(v ->
+                startActivity(new Intent(Loginactivity.this, Register.class))
+        );
     }
 }

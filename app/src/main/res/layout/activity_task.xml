@@ -1,14 +1,32 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="16dp">
 
+    <!-- Motivational Quote at the Top -->
+    <TextView
+        android:id="@+id/quoteText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/quote_text"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textColor="@android:color/holo_blue_dark"
+        android:padding="8dp"
+        android:layout_alignParentTop="true"/>
+
+    <!-- RecyclerView for Tasks -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp"/>
+        android:layout_below="@id/quoteText"
+        android:layout_above="@id/fabAddTask"
+        android:paddingTop="8dp"
+        android:clipToPadding="false"/>
 
+    <!-- Floating Action Button to Add Tasks -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAddTask"
         android:layout_width="wrap_content"
@@ -18,16 +36,6 @@
         android:layout_margin="16dp"
         android:contentDescription="@string/addTask"
         app:srcCompat="@android:drawable/ic_input_add"
-        />
-    <TextView
-        android:id="@+id/quoteText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/quote_text"
-        android:textAlignment="center"
-        android:textSize="16sp"
-        android:padding="8dp"
-        android:layout_marginTop="16dp"
-        android:textColor="@android:color/holo_blue_dark"/>
+        app:backgroundTint="?attr/colorPrimaryDark"/>
 
 </RelativeLayout>
