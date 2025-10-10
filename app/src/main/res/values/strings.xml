@@ -7,6 +7,18 @@
     <string name="String3">Start Workout</string>
     <string name="register">Register</string>
     <string name="String4">Already have an account? Login</string>
-
-
+    <!--Quote-->
+    <String name="String5">New Quote</String>>
+    <String name="String6">Quote Text</String>
+    <!--Task Activity-->
+    <string name="String7">Task Title</string>
+    <string name="String8">Task Description</string>
+    <string name="String9">Your Tasks</string>
+    <string name="String10">Add Task</string>
+    <!-- Mood Tracker -->
+    <string name="todaysMood">Today\'s Mood</string>
+    <string name="happy">😊</string>
+    <string name="neutral">😐</string>
+    <string name="sad">😢</string>
+    <string name="angry">😠</string>
 </resources>

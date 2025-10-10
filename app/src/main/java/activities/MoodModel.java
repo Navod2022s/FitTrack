@@ -4,9 +4,7 @@ public class MoodModel {
     private String date;
     private String mood;
 
-    public MoodModel() {
-        // Required for Firestore
-    }
+    public MoodModel() {} // Firestore needs empty constructor
 
     public MoodModel(String date, String mood) {
         this.date = date;
@@ -19,13 +17,5 @@ public class MoodModel {
 
     public String getMood() {
         return mood;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public void setMood(String mood) {
-        this.mood = mood;
     }
 }
