@@ -1,77 +1,96 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/imageView4"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:accessibilityLiveRegion="polite"
-    android:background="@drawable/fit_track_ic"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:padding="24dp">
+    android:layout_height="match_parent">
 
-    <!-- Circular progress indicator -->
-
-    <com.google.android.material.progressindicator.CircularProgressIndicator
-        android:id="@+id/stepProgress"
-        style="@style/CardView.Light"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        app:indicatorColor="@color/colorPrimary"
-        app:indicatorInset="20dp"
-        app:indicatorSize="10dp"
-        app:max="10000"
-        app:progress="0"
-        app:trackColor="@android:color/darker_gray"
-        app:trackThickness="16dp" />
-
-    <!-- Steps count inside circle -->
-    <TextView
-        android:id="@+id/stepCountView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="-180dp"
-        android:gravity="center"
-        android:text="0"
-        android:textColor="@android:color/black"
-        android:textSize="40sp"
-        android:textStyle="bold" />
-
-    <!-- Steps label -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="Steps"
-        android:textColor="@android:color/darker_gray"
-        android:textSize="18sp" />
-
-    <!-- Info row like Huawei Health -->
-
-
-    <LinearLayout
+    <!-- Background Image -->
+    <ImageView
+        android:id="@+id/backgroundImage"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_modern_light"
+        android:contentDescription="@string/BgImage" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#20000000" />
+
+    <!-- Foreground content -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="24dp"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <!-- Step Progress Indicator -->
+        <FrameLayout
+            android:layout_width="250dp"
+            android:layout_height="250dp">
+
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/stepProgress"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:indicatorColor="@color/colorPrimary"
+                app:indicatorSize="10dp"
+                app:trackColor="@android:color/darker_gray"
+                app:trackThickness="16dp"
+                app:max="10000"
+                app:progress="0" />
+
+            <!-- Steps count inside circle -->
+            <TextView
+                android:id="@+id/stepCountView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/Zero"
+                android:textColor="@android:color/black"
+                android:textSize="40sp"
+                android:textStyle="bold" />
+
+        </FrameLayout>
+
+        <!-- Steps label -->
         <TextView
-            android:id="@+id/distanceView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="40dp"
-            android:text="0 km"
-            android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:layout_marginTop="8dp"
+            android:text="@string/Steps"
+            android:textColor="@color/dark_on_primary"
+            android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/caloriesView"
-            android:layout_width="wrap_content"
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="0 kcal"
-            android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:layout_marginTop="32dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/distanceView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="40dp"
+                android:text="@string/km"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/caloriesView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/kcal"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+        </LinearLayout>
 
     </LinearLayout>
-
-</LinearLayout>
+</FrameLayout>

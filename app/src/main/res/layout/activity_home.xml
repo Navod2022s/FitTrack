@@ -1,11 +1,32 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:padding="24dp">
+>
+    <!-- Background Image -->
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_modern_light"
+        android:contentDescription="@string/BgImage"/>
 
+    <!-- Transparent Overlay for readability -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#20000000" />
+
+    <!-- Foreground content -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <TextView
+
         android:text="@string/String2"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -15,6 +36,12 @@
 
     <Button
         android:text="@string/String3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        android:elevation="4dp"
+        android:fontFamily="@font/roboto_semicondensed_medium"/>
 </LinearLayout>
+</FrameLayout>
