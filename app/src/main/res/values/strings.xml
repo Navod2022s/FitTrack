@@ -1,22 +1,39 @@
 <resources>
-    <string name="app_name">Login</string>
-    <string name="E_mail">Email</string>
-    <string name="Password">Password</string>
+    <string name="app_name" >Login</string>
+    <string name="E_mail" >Email</string>
+    <string name="Password" >Password</string>
     <string name="String">Don\'t have an account ? Register</string>
     <string name="String2">Welcome to FitTrack!</string>
     <string name="String3">Start Workout</string>
     <string name="register">Register</string>
     <string name="String4">Already have an account? Login</string>
+    <!--Dashboard-->
+    <string name="AddTask">Add Task</string>
+    <string name="Mood">Rate The  Mood</string>
+    <string name="StepCounter">Step Counter</string>
+    <string name="Logout">Logout</string>
+    <string name="LoginImage">Login Image</string>
+    <string name="BgImage">Bg Image</string>
+
+    <!--step counter-->
+
+    <string name="Zero">0</string>
+    <string name="Steps">Steps</string>
+    <string name="km">0 km</string>
+    <string name="kcal">0 kcal</string>
     <!--Quote-->
-    <String name="String5">New Quote</String>>
-    <String name="String6">Quote Text</String>
+    <string name="new_quote">New Quote</string>
+    <string name="quote_text">Quote Text</string>
+    <string name="bg_image_desc">Inspirational background</string>
     <!--Task Activity-->
     <string name="String7">Task Title</string>
     <string name="String8">Task Description</string>
     <string name="String9">Your Tasks</string>
     <string name="String10">Add Task</string>
+    <string name="String11">Stay productive and track your progress</string>
     <!-- Mood Tracker -->
-    <string name="todaysMood">Today\'s Mood</string>
+    <string name="hello">Hello</string>
+    <string name="todayMood">Today\'s Mood</string>
     <string name="happy">😊</string>
     <string name="neutral">😐</string>
     <string name="sad">😢</string>

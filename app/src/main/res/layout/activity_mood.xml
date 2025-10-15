@@ -1,78 +1,169 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:gravity="center">
+    tools:context="activities.MoodActivity">
 
-    <!-- Motivational Quote at the Top -->
-    <TextView
-        android:id="@+id/quoteText"
+    <!-- Background image -->
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_modern_light"
+        android:contentDescription="@string/BgImage" />
+
+    <!-- Transparent overlay -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#20000000" />
+
+    <!-- Foreground layout -->
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello"
-        android:textAlignment="center"
-        android:textSize="16sp"
-        android:padding="8dp"
-        android:layout_marginBottom="24dp"
-        android:textColor="?attr/colorPrimary"/>
+        android:padding="24dp"
+        android:gravity="top|center_horizontal">
 
-    <!-- Today's Mood Label -->
-    <TextView
-        android:id="@+id/todayMoodText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/todaysMood"
-        android:textSize="18sp"
-        android:layout_marginBottom="16dp"/>
+        <!-- Motivational Quote -->
+        <TextView
+            android:id="@+id/quoteText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hello"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textStyle="italic"
+            android:fontFamily="@font/roboto_medium"
+            android:layout_marginBottom="32dp"
+            android:textColor="@android:color/white" />
 
-    <!-- Mood Buttons -->
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
+        <!-- "Today's Mood" Title -->
+        <TextView
+            android:id="@+id/todayMoodText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/todayMood"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="24dp"
+            android:fontFamily="@font/roboto_medium"
+            android:textColor="@android:color/white" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/moodHappy"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:text="@string/happy"
-            android:textSize="32sp"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            app:backgroundTint="?attr/colorSecondary"/>
+        <!-- Mood Buttons Container -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:weightSum="4"
+            android:layout_marginTop="16dp">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/moodNeutral"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:text="@string/neutral"
-            android:textSize="32sp"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:layout_marginStart="16dp"
-            app:backgroundTint="?attr/colorSecondary"/>
+            <!-- Happy -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_weight="1"
+                android:maxWidth="100dp"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="6dp"
+                app:cardBackgroundColor="?attr/colorSecondaryContainer"
+                android:focusable="false"
+                android:clickable="false">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/moodSad"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:text="@string/sad"
-            android:textSize="32sp"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:layout_marginStart="16dp"
-            app:backgroundTint="?attr/colorSecondary"/>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/moodHappy"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/happy"
+                    android:textSize="32sp"
+                    android:backgroundTint="@android:color/transparent"
+                    android:textColor="?attr/colorPrimary"
+                    android:focusable="true"
+                    android:clickable="true"/>
+            </com.google.android.material.card.MaterialCardView>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/moodAngry"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:text="@string/angry"
-            android:textSize="32sp"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:layout_marginStart="16dp"
-            app:backgroundTint="?attr/colorSecondary"/>
+            <!-- Neutral -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_weight="1"
+                android:maxWidth="100dp"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="6dp"
+                app:cardBackgroundColor="?attr/colorSecondaryContainer"
+                android:focusable="false"
+                android:clickable="false">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/moodNeutral"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/neutral"
+                    android:textSize="32sp"
+                    android:backgroundTint="@android:color/transparent"
+                    android:textColor="?attr/colorPrimary"
+                    android:focusable="true"
+                    android:clickable="true"/>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Sad -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_weight="1"
+                android:maxWidth="100dp"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="6dp"
+                app:cardBackgroundColor="?attr/colorSecondaryContainer"
+                android:focusable="false"
+                android:clickable="false">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/moodSad"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/sad"
+                    android:textSize="32sp"
+                    android:backgroundTint="@android:color/transparent"
+                    android:textColor="?attr/colorPrimary"
+                    android:focusable="true"
+                    android:clickable="true"/>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Angry -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_weight="1"
+                android:maxWidth="100dp"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="6dp"
+                app:cardBackgroundColor="?attr/colorSecondaryContainer"
+                android:focusable="false"
+                android:clickable="false">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/moodAngry"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/angry"
+                    android:textSize="32sp"
+                    android:backgroundTint="@android:color/transparent"
+                    android:textColor="?attr/colorPrimary"
+                    android:focusable="true"
+                    android:clickable="true"/>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
 
     </LinearLayout>
-
-</LinearLayout>
+</FrameLayout>

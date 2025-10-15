@@ -1,28 +1,92 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="24dp"
-    android:gravity="center"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <Button
-        android:id="@+id/taskButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"/>
 
-    <Button
-        android:id="@+id/moodButton"
+    <!-- Background Image -->
+    <ImageView
+        android:id="@+id/backgroundImage"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"/>
-    <Button
-        android:id="@+id/stepButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"/>
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_glass_gradient"
+        android:contentDescription="@string/BgImage"/>
 
-    <Button
-        android:id="@+id/logoutButton"
+    <!-- Transparent Overlay for readability -->
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:background="#70000000" />
+
+    <!-- Foreground content -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Login Image -->
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginBottom="24dp"
+            android:src="@drawable/spalsh_fit_track"
+            android:scaleType="centerCrop"
+            android:background="@drawable/circle_background"
+            android:contentDescription="@string/LoginImage" />
+
+        <!-- Task Button -->
+        <Button
+            android:id="@+id/taskButton"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@string/AddTask"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/rounded_button"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:elevation="4dp"
+            android:fontFamily="@font/roboto_semicondensed_medium" />
+
+        <!-- Mood Button -->
+        <Button
+            android:id="@+id/moodButton"
+            android:layout_width="275dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@string/Mood"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/rounded_button"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:elevation="4dp"
+            android:fontFamily="@font/roboto_semicondensed_medium" />
+
+        <!-- Step Counter Button -->
+        <Button
+            android:id="@+id/stepButton"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@string/StepCounter"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/rounded_button"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:elevation="4dp"
+            android:fontFamily="@font/roboto_semicondensed_medium" />
+
+        <!-- Logout Button -->
+        <Button
+            android:id="@+id/logoutButton"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@string/Logout"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/rounded_button"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:elevation="4dp"
+            android:fontFamily="@font/roboto_semicondensed_medium" />
+
+    </LinearLayout>
+</FrameLayout>

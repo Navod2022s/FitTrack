@@ -30,7 +30,7 @@ public class MoodActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mood);
 
-        // Initialize Firestore
+        // Initialize Fire Store
         db = FirebaseFirestore.getInstance();
         moodsRef = db.collection("moods");
 
@@ -105,4 +105,5 @@ public class MoodActivity extends AppCompatActivity {
                 break;
         }
     }
+
 }
