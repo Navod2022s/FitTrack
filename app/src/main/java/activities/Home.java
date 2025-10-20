@@ -17,7 +17,7 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_home);
-        startWorkout = findViewById(R.id.startWorkout);
+        startWorkout = findViewById(R.id.start);
         startWorkout.setOnClickListener(v -> {
             startActivity(new Intent(Home.this, DashboardActivity.class));
         });

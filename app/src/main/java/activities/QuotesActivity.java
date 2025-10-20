@@ -19,7 +19,7 @@ public class QuotesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quotes);
+        setContentView(R.layout.activity_quote);
 
         quoteText = findViewById(R.id.quoteText);
         newQuoteButton = findViewById(R.id.newQuoteButton);

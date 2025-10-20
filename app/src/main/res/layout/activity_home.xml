@@ -35,6 +35,7 @@
         android:layout_height="wrap_content"/>
 
     <Button
+        android:id="@+id/start"
         android:text="@string/String3"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
