@@ -2,22 +2,22 @@ package activities;
 
 import android.content.Context;
 
+import com.example.login.R;
+
 import java.util.Random;
 
 public class QuoteHelper {
 
-    private static final String[] quotes = {
-            "Believe in yourself!",
-            "Every day is a new opportunity.",
-            "Stay positive, work hard, make it happen.",
-            "Success is a journey, not a destination.",
-            "Don’t watch the clock; do what it does. Keep going.",
-            "Your limitation—it’s only your imagination."
+    private static final String[] QUOTES = {
+            "Keep going, you're doing great!",
+            "Small progress is still progress.",
+            "Your mood doesn't define your potential.",
+            "Every day is a new beginning.",
+            "Breathe. You’ve got this!"
     };
 
     public static String getRandomQuote(Context context) {
         Random random = new Random();
-        int index = random.nextInt(quotes.length);
-        return quotes[index];
+        return QUOTES[random.nextInt(QUOTES.length)];
     }
 }

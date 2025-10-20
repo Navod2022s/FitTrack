@@ -26,6 +26,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <!-- Motivational Quote -->
+        <TextView
+            android:id="@+id/quoteText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/hello"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="italic" />
+
         <!-- Step Progress Indicator -->
         <FrameLayout
             android:layout_width="250dp"
@@ -38,9 +51,9 @@
                 app:indicatorColor="@color/colorPrimary"
                 app:indicatorSize="10dp"
                 app:trackColor="@android:color/darker_gray"
-                app:trackThickness="16dp"
-                app:max="10000"
-                app:progress="0" />
+                app:trackThickness="16dp"  />
+            <!--  app:max="10000"
+          app:indicatorProgress="0"-->
 
             <!-- Steps count inside circle -->
             <TextView

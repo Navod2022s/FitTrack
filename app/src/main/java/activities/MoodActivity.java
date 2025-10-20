@@ -1,5 +1,6 @@
 package activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,46 +16,61 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Random;
 
 public class MoodActivity extends AppCompatActivity {
 
     private TextView todayMoodText, quoteText;
-    private MaterialButton moodHappy, moodNeutral, moodSad, moodAngry;
+    private MaterialButton moodHappy, moodNeutral, moodSad, moodAngry, btnMoodHistory;
 
     private FirebaseFirestore db;
     private CollectionReference moodsRef;
     private String todayDate;
+    private String[] quotes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mood);
 
-        // Initialize Fire Store
+        //  Initialize Firestore
         db = FirebaseFirestore.getInstance();
         moodsRef = db.collection("moods");
 
-        // Current date
+        //Get todays date
         todayDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
 
         // Bind views
         todayMoodText = findViewById(R.id.todayMoodText);
         quoteText = findViewById(R.id.quoteText);
-        quoteText.setText(QuoteHelper.getRandomQuote(this));
 
         moodHappy = findViewById(R.id.moodHappy);
         moodNeutral = findViewById(R.id.moodNeutral);
         moodSad = findViewById(R.id.moodSad);
         moodAngry = findViewById(R.id.moodAngry);
+        btnMoodHistory = findViewById(R.id.btnMoodHistory);
 
-        // Load previously saved mood
+        // Optional motivational quote helper
+        quoteText.setText(QuoteHelper.getRandomQuote(this));
+
+        // Load todays mood
         loadTodayMood();
 
-        // Button actions
-        moodHappy.setOnClickListener(v -> saveMood("happy"));
-        moodNeutral.setOnClickListener(v -> saveMood("neutral"));
-        moodSad.setOnClickListener(v -> saveMood("sad"));
-        moodAngry.setOnClickListener(v -> saveMood("angry"));
+        // Load quotes
+        quotes = getResources().getStringArray(R.array.motivational_quotes);
+
+        // show random quote
+        showRandomQuote();
+
+        // Mood button listeners
+        moodHappy.setOnClickListener(v -> saveMood("😊"));
+        moodNeutral.setOnClickListener(v -> saveMood("😐"));
+        moodSad.setOnClickListener(v -> saveMood("😔"));
+        moodAngry.setOnClickListener(v -> saveMood("😡"));
+
+        // Open mood history
+        btnMoodHistory.setOnClickListener(v ->
+                startActivity(new Intent(this, MoodHistoryActivity.class)));
     }
 
     private void loadTodayMood() {
@@ -83,7 +99,7 @@ public class MoodActivity extends AppCompatActivity {
     }
 
     private void highlightMoodButton(String mood) {
-        // Reset all button opacity
+        // Reset alpha for all
         moodHappy.setAlpha(0.5f);
         moodNeutral.setAlpha(0.5f);
         moodSad.setAlpha(0.5f);
@@ -91,19 +107,17 @@ public class MoodActivity extends AppCompatActivity {
 
         // Highlight selected
         switch (mood) {
-            case "happy":
-                moodHappy.setAlpha(1f);
-                break;
-            case "neutral":
-                moodNeutral.setAlpha(1f);
-                break;
-            case "sad":
-                moodSad.setAlpha(1f);
-                break;
-            case "angry":
-                moodAngry.setAlpha(1f);
-                break;
+            case "😊": moodHappy.setAlpha(1f); break;
+            case "😐": moodNeutral.setAlpha(1f); break;
+            case "😔": moodSad.setAlpha(1f); break;
+            case "😡": moodAngry.setAlpha(1f); break;
         }
     }
 
+    private void showRandomQuote() {
+        if (quotes != null && quotes.length > 0) {
+            int index = new Random().nextInt(quotes.length);
+            quoteText.setText(quotes[index]);
+        }
+    }
 }

@@ -44,6 +44,7 @@ public class Register extends AppCompatActivity {
                 Toast.makeText(this, "Password must be at least 6 characters", Toast.LENGTH_SHORT).show();
                 return;
             }
+            // establish fire base connection
 
             auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(task -> {
