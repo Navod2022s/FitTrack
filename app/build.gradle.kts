@@ -38,6 +38,7 @@ dependencies {
     implementation ("com.google.android.material:material:1.9.0")
     implementation("com.google.firebase:firebase-auth:22.3.1")
     implementation ("com.google.firebase:firebase-firestore:24.7.2")
+    implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
